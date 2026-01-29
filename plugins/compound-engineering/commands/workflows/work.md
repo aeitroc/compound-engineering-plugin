@@ -30,47 +30,11 @@ This command takes a work document (plan, specification, or todo file) and execu
 
 2. **Setup Environment**
 
-   First, check the current branch:
+   Work on the current branch. Do not create new branches or switch branches.
 
    ```bash
-   current_branch=$(git branch --show-current)
-   default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
-
-   # Fallback if remote HEAD isn't set
-   if [ -z "$default_branch" ]; then
-     default_branch=$(git rev-parse --verify origin/main >/dev/null 2>&1 && echo "main" || echo "master")
-   fi
+   git branch --show-current
    ```
-
-   **If already on a feature branch** (not the default branch):
-   - Ask: "Continue working on `[current_branch]`, or create a new branch?"
-   - If continuing, proceed to step 3
-   - If creating new, follow Option A or B below
-
-   **If on the default branch**, choose how to proceed:
-
-   **Option A: Create a new branch**
-   ```bash
-   git pull origin [default_branch]
-   git checkout -b feature-branch-name
-   ```
-   Use a meaningful name based on the work (e.g., `feat/user-authentication`, `fix/email-validation`).
-
-   **Option B: Use a worktree (recommended for parallel development)**
-   ```bash
-   skill: git-worktree
-   # The skill will create a new branch from the default branch in an isolated worktree
-   ```
-
-   **Option C: Continue on the default branch**
-   - Requires explicit user confirmation
-   - Only proceed after user explicitly says "yes, commit to [default_branch]"
-   - Never commit directly to the default branch without explicit permission
-
-   **Recommendation**: Use worktree if:
-   - You want to work on multiple features simultaneously
-   - You want to keep the default branch clean while experimenting
-   - You plan to switch between branches frequently
 
 3. **Create Todo List**
    - Use TodoWrite to break plan into actionable tasks
@@ -257,7 +221,7 @@ This command takes a work document (plan, specification, or todo file) and execu
 3. **Create Pull Request**
 
    ```bash
-   git push -u origin feature-branch-name
+   git push -u origin $(git branch --show-current)
 
    gh pr create --title "Feature: [Description]" --body "$(cat <<'EOF'
    ## Summary
