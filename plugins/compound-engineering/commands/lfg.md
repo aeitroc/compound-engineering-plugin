@@ -13,7 +13,6 @@ Run these slash commands in order. Do not do anything else.
 5. `/workflows:review`
 6. `/compound-engineering:resolve_todo_parallel`
 7. `/compound-engineering:test-browser`
-8. `/compound-engineering:feature-video`
-9. Output `<promise>DONE</promise>` when video is in PR
+8. Output `<promise>DONE</promise>` when complete
 
 Start with step 1 now.

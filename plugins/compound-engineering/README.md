@@ -7,7 +7,7 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 | Component | Count |
 |-----------|-------|
 | Agents | 27 |
-| Commands | 20 |
+| Commands | 19 |
 | Skills | 14 |
 | MCP Servers | 1 |
 
@@ -99,7 +99,6 @@ Core workflow commands use `workflows:` prefix to avoid collisions with built-in
 | `/triage` | Triage and prioritize issues |
 | `/test-browser` | Run browser tests on PR-affected pages |
 | `/xcode-test` | Build and test iOS apps on simulator |
-| `/feature-video` | Record video walkthroughs and add to PR description |
 
 ## Skills
 
